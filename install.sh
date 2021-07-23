@@ -3,20 +3,26 @@
 LINUXBASE=$(cat /etc/os-release | grep ID_LIKE | cut -d = -f 2)
 
 case "$LINUXBASE" in
-    arch) INSTALL="pacman --noconfirm --needed -Sy" ;;
-    debian) INSTALL="apt -y install" ;;
+    arch) INSTALL="sudo pacman --noconfirm --needed -Sy" ;;
+    debian) INSTALL="sudo apt -y install" ;;
 esac
 
 
 function install_ohmyzsh() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
 function install_delta() {
     PACKAGE=git-delta_0.8.3_amd64
     wget -c https://github.com/dandavison/delta/releases/download/0.8.3/$PACKAGE.deb 
-    dpkg -i $PACKAGE.deb 
+    sudo dpkg -i $PACKAGE.deb 
     rm $PACKAGE.deb
+}
+
+function install_bat() {
+    mkdir -p ~/.local/bin
+    ln -s /usr/bin/batcat ~/.local/bin/bat
 }
 
 function install_base() {
@@ -28,6 +34,7 @@ function install_base() {
 
     install_ohmyzsh
     install_delta
+    install_bat
 }
 
 function install_fonts() {
@@ -39,7 +46,7 @@ function install_fonts() {
 
 function install_golang() {
     wget -c https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
-    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz && rm go1.16.6.linux-amd64.tar.gz
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz && rm go1.16.6.linux-amd64.tar.gz
 }
 
 function install_nodejs() {
@@ -53,7 +60,7 @@ function install_python3() {
 
 # Steps
 install_base
-install_fonts
 install_golang
+install_fonts
 install_nodejs
 install_python3
