@@ -45,8 +45,9 @@ function install_fonts() {
 }
 
 function install_golang() {
-    wget -c https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
-    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz && rm go1.16.6.linux-amd64.tar.gz
+    $last=$(wget -qO- https://golang.org/dl/ | grep -oP 'go([0-9\.]+)\.linux-amd64\.tar\.gz' | head -n 1)
+    wget -c https://golang.org/dl/$last_version
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $last && rm $last
 }
 
 function install_nodejs() {
