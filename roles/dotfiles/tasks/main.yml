@@ -1,0 +1,10 @@
+---
+- name: clone dotfiles
+  git:
+    repo: https://github.com/paraizofelipe/dotfiles.git 
+    dest: ~/projects/dotfiles
+    force: yes
+
+- include: zsh.yml
+- include: tmux.yml
+- include: alacritty.yml

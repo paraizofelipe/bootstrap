@@ -1,0 +1,4 @@
+---
+
+- name: install last version of rust
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y

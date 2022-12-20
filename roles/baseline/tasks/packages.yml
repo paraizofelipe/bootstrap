@@ -1,0 +1,47 @@
+---
+
+- name: installing linux apps
+  become: yes
+  apt:
+    install_recommends: yes
+    state: present
+    pkg:
+        - aria2
+        - bash-completion
+        - bat
+        - blt-dev
+        - cmake
+        - curl
+        - delta
+        - direnv
+        - fzf
+        - gettext
+        - git
+        - htop
+        - jq
+        - libbz2-dev
+        - libfontconfig1-dev
+        - libfreetype6-dev
+        - libgdbm-dev
+        - libncurses5-dev
+        - libreadline-dev
+        - libsqlite3-dev
+        - libssl-dev
+        - libxcb-xfixes0-dev
+        - libxkbcommon-dev
+        - llvm
+        - pkg-config
+        - polybar
+        - python3
+        - python3-pip
+        - ranger
+        - ripgrep
+        - stow
+        - tcl-dev
+        - tk-dev
+        - tmux
+        - unzip
+        - wget
+        - zlib1g-dev
+        - zsh
+        - zstd

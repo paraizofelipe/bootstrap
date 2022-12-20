@@ -1,0 +1,6 @@
+---
+- name: set configs to polybar
+  file:
+    src: "~/projects/dotfiles/polybar/"
+    dest: "~/.config/polybar/"
+

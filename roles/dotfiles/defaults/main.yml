@@ -1,0 +1,10 @@
+---
+# defaults file for dotfiles
+
+zshrc_path: ~/.zshrc
+dotfile_zsh: ~/projects/dotfiles/zsh
+dotfile_zshrc: ~/projects/dotfiles/zsh/.zshrc
+
+tmux_path: ~/.tmux.conf
+dotfile_tmux: ~/projects/dotfiles/tmux
+dotfile_tmux_conf: ~/projects/dotfiles/tmux/.tmux.conf

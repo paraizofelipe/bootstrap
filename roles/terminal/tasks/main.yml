@@ -1,0 +1,6 @@
+---
+- include: fonts.yml
+- include: ohmyzsh.yml
+- include: delta.yml
+- include: bat.yml
+- include: alacritty.yml

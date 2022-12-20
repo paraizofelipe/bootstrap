@@ -1,0 +1,11 @@
+---
+
+- name: create local directory to binaries 
+  file:
+    path: "~/.local/bin"
+    state: directory
+
+- name: create config directory
+  file:
+    path: "~/.config"
+    state: directory

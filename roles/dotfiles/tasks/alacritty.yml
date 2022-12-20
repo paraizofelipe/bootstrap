@@ -1,0 +1,6 @@
+---
+- name: set configs to alacritty
+  file:
+    src: "~/projects/dotfiles/alacritty/"
+    dest: "~/.config/alacritty/"
+

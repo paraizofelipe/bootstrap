@@ -1,0 +1,46 @@
+---
+- name: ensure that oh-my-zsh is installed
+  command: test -d /home/{{ ansible_user_id }}/.oh-my-zsh
+  register: ohmyzsh
+  ignore_errors: yes
+
+- name: installing oh-my-zsh
+  shell:
+    cmd: 'curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash'
+    warn: no
+  when: ohmyzsh.rc != 0
+
+- name: changing default shell to zsh
+  become: yes
+  user: 
+    name: '{{ ansible_user_id }}'
+    shell: /bin/zsh 
+
+- name: creating zsh completion folder
+  file:
+    path: /home/{{ ansible_user_id }}/.oh-my-zsh/completions
+    state: directory
+    mode: 0755
+
+- name: install zsh syntax highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+- name: adding autoload to compinit
+  lineinfile:
+    path: /home/{{ ansible_user_id }}/.zshrc
+    line: 'autoload -U compinit && compinit'
+    state: present
+
+- name: install zsh plugin autosuggestions 
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    force: yes
+
+- name: install zsh plugin fzf 
+  git:
+    repo: https://github.com/unixorn/fzf-zsh-plugin.git 
+    dest: ~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin 
+    force: yes

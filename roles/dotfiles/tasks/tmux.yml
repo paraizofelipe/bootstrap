@@ -1,0 +1,23 @@
+---
+- name: check if .tmux.conf exist
+  stat:
+    path: "{{ tmux_path }}"
+  register: tmux_avaliable
+
+- name: remove .tmux.conf file (only if exist)
+  file: 
+    path: "{{ tmux_path }}"
+    state: absent
+  when: tmux_avaliable.stat.exists
+
+- name: set configs to tmux
+  file:
+    src: "{{ dotfile_tmux_conf }}"
+    dest: "{{ tmux_path }}"
+    state: link
+
+- name: install plugin manger to TMUX
+  git:
+    repo: https://github.com/tmux-plugins/tpm 
+    dest: ~/.tmux/plugins/tpm
+    force: yes

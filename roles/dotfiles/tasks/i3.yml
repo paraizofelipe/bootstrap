@@ -1,0 +1,6 @@
+---
+- name: set configs to i3
+  file:
+    src: "~/projects/dotfiles/i3/"
+    dest: "~/.config/i3/"
+

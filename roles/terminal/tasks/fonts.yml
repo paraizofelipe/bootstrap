@@ -1,0 +1,37 @@
+---
+
+- name: ensure local fonts directory
+  file:
+    path: "~/.fonts"
+    state: directory
+      
+- name: ensure global fonts directory
+  become: yes
+  file:
+    path: "/usr/local/share/fonts"
+    state: directory
+
+- name: hack exists
+  shell: "ls /usr/local/share/fonts/Hack*Nerd*Font*Complete*"
+  register: hack_exists
+  ignore_errors: yes
+
+- name: download hack
+  when: hack_exists is failed
+  become: yes
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    dest: "/usr/local/share/fonts"
+    remote_src: yes
+
+- name: hack exists
+  shell: "ls ~/.fonts/Hack*Nerd*Font*Complete*"
+  register: hack_exists
+  ignore_errors: yes
+
+- name: download hack
+  when: hack_exists is failed
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    dest: "~/.fonts/"
+    remote_src: yes

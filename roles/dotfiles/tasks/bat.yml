@@ -1,0 +1,5 @@
+---
+- name: set configs to bat
+  file:
+    src: "~/projects/dotfiles/bat/"
+    dest: "~/.config/bat/"

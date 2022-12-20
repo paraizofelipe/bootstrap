@@ -1,0 +1,9 @@
+---
+- name: clone alacritty source
+  git:
+    repo: https://github.com/alacritty/alacritty.git
+    dest: ~/projects/alacritty/
+    force: yes
+
+- name: build alacritty with rust
+  command: chdir=~/projects/alacritty/ cargo build --release

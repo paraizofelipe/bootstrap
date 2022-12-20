@@ -1,0 +1,29 @@
+---
+- name: check if .zshrc exist
+  stat:
+    path: "{{ zshrc_path }}"
+  register: zshrc_avaliable
+
+- name: remove .zshrc file (only if exist)
+  file: 
+    path: "{{ zshrc_path }}"
+    state: absent
+  when: zshrc_avaliable.stat.exists
+
+- name: set configs to zsh
+  file:
+    src: "{{ dotfile_zshrc }}"
+    dest: "{{ zshrc_path }}"
+    state: link
+
+- name: create global database URLs
+  copy:
+    content: ''
+    dest: ~/.database.env
+    force: no
+
+- name: create global utils envs
+  copy:
+    content: ''
+    dest: ~/.env
+    force: no
