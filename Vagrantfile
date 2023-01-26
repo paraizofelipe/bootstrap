@@ -17,5 +17,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible_local" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "playbook.yml"
+    ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
   end
 end

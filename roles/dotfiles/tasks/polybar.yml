@@ -3,4 +3,8 @@
   file:
     src: "~/projects/dotfiles/polybar/"
     dest: "~/.config/polybar/"
-
+    state: link
+    force: yes
+  tags:
+    - polybar
+    - polybar_config

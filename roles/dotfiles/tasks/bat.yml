@@ -1,5 +1,10 @@
 ---
 - name: set configs to bat
   file:
-    src: "~/projects/dotfiles/bat/"
-    dest: "~/.config/bat/"
+    src: "~/projects/dotfiles/bat"
+    dest: "~/.config/bat"
+    state: link
+    force: yes
+  tags:
+    - bat
+    - bat_config

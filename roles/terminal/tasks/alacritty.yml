@@ -1,9 +1,13 @@
 ---
-- name: clone alacritty source
+- name: clone alacritty source 
   git:
     repo: https://github.com/alacritty/alacritty.git
     dest: ~/projects/alacritty/
     force: yes
+
+- name: load env var PATH
+  set_fact:
+    env_path: "{{ lookup('file', '~/.bashrc') }}"
 
 - name: build alacritty with rust
   command: chdir=~/projects/alacritty/ cargo build --release

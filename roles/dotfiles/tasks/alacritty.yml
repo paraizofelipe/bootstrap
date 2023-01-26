@@ -1,6 +1,18 @@
 ---
+- name: create directory with configs to alacritty
+  file:
+    path: ~/.config/alacritty
+    state: directory
+  tags:
+    - alacritty
+    - alacritty_directory
+
 - name: set configs to alacritty
   file:
-    src: "~/projects/dotfiles/alacritty/"
-    dest: "~/.config/alacritty/"
-
+    src: "~/projects/dotfiles/alacritty"
+    dest: "~/.config/alacritty"
+    state: link
+    force: yes
+  tags:
+    - alacritty
+    - alacritty_config

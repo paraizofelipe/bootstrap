@@ -1,6 +1,10 @@
 ---
 - name: set configs to i3
   file:
-    src: "~/projects/dotfiles/i3/"
-    dest: "~/.config/i3/"
-
+    src: "~/projects/dotfiles/i3"
+    dest: "~/.config/i3"
+    state: link
+    force: yes
+  tags:
+    - i3
+    - i3_config
