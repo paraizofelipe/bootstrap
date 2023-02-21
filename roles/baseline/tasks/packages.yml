@@ -27,6 +27,7 @@
         - gettext
         - git
         - htop
+        - i3
         - jq
         - libbz2-dev
         - libfontconfig1-dev
