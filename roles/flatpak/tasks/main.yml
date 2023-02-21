@@ -1,0 +1,21 @@
+---
+- name: add flatpak repository
+  become: yes
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
+  tags:
+    - flatpak
+
+- name: install flatpak packages
+  become: yes
+  flatpak:
+    name: "{{ item }}" 
+    state: present
+    method: system
+  with_items:
+    - "{{ flatpak_packages }}"
+  tags:
+    - flatpak

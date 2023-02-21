@@ -1,0 +1,6 @@
+---
+flatpak_packages:
+  - com.slack.Slack 
+  - com.spotify.Client
+  - com.google.Chrome
+  - org.telegram.desktop

@@ -1,4 +1,11 @@
 ---
+- name: add repository
+  become: yes
+  apt_repository:
+    repo: ppa:flatpak/stable
+    state: present
+  tags:
+    - packages
 
 - name: installing linux apps
   become: yes
@@ -10,10 +17,12 @@
         - bash-completion
         - bat
         - blt-dev
+        - cargo
         - cmake
         - curl
         - delta
         - direnv
+        - flatpak
         - fzf
         - gettext
         - git
@@ -45,3 +54,5 @@
         - zlib1g-dev
         - zsh
         - zstd
+  tags:
+    - packages

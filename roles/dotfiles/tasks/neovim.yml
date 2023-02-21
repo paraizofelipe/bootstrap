@@ -1,0 +1,44 @@
+- name: check old install
+  stat:
+    path: /opt/nvim
+  register: nvim_avaliable
+  tags:
+    - nvim
+
+- name: get last version of nvim
+  become: yes
+  unarchive:
+    src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+    dest: /opt
+    remote_src: yes
+  tags:
+    - nvim
+
+- name: install last version of nvim
+  file:
+    src: "/opt/nvim-linux64/bin/nvim"
+    dest: "~/.local/bin/nvim"
+    state: link
+    force: yes
+  tags:
+    - nvim
+
+- name: clone configs of nvim
+  git:
+    repo:  https://github.com/paraizofelipe/nvim.git
+    dest: ~/projects/nvim
+    force: yes
+  tags:
+    - nvim
+
+- name: link configs of nvim
+  file:
+    src: "~/projects/nvim"
+    dest: "~/.config/nvim"
+    state: link
+    force: yes
+  tags:
+    - nvim
+
+
+

@@ -4,10 +4,20 @@
     repo: https://github.com/alacritty/alacritty.git
     dest: ~/projects/alacritty/
     force: yes
-
-- name: load env var PATH
-  set_fact:
-    env_path: "{{ lookup('file', '~/.bashrc') }}"
+  tags:
+    - alacritty
 
 - name: build alacritty with rust
   command: chdir=~/projects/alacritty/ cargo build --release
+  tags:
+    - alacritty
+
+- name: install alacritty with cargo
+  file:
+    src: ~/projects/alacritty/target/release/alacritty
+    dest: ~/.local/bin/alacritty
+    state: link
+    force: yes
+  tags:
+    - alacritty
+    - alacritty_install

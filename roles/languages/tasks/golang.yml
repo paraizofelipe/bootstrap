@@ -1,12 +1,10 @@
 ---
-- name: last package of golang
-  shell: wget -qO- https://golang.org/dl/ | grep -oP 'go([0-9.]+).linux-amd64.tar.gz' | head -n 1
-  register: golang_last_package
-
 - name: check if golang exist
   stat:
     path: /usr/local/go
   register: golang_avaliable
+  tags:
+    - golang
 
 - name: remove old golang directory
   become: yes
@@ -14,10 +12,14 @@
     path: /usr/local/go 
     state: absent
   when: golang_avaliable.stat.exists
+  tags:
+    - golang
 
 - name: install last version of golang
   become: yes
   unarchive:
-    src: "https://go.dev/dl/{{ golang_last_package.stdout }}"
+    src: "https://go.dev/dl/go1.19.5.linux-amd64.tar.gz"
     dest: /usr/local/
     remote_src: yes
+  tags:
+    - golang
