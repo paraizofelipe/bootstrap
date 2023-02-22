@@ -1,10 +1,18 @@
 ---
+- name: ensure that i3 is installed
+  command: test -d ~/.config/.i3
+  register: i3_installed
+  ignore_errors: yes
+  tags:
+    - i3
+
 - name: set configs to i3
   file:
     src: "~/projects/dotfiles/i3"
     dest: "~/.config/i3"
     state: link
     force: yes
+  when: i3_installed.rc != 0
   tags:
     - i3
     - i3_config
