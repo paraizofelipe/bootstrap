@@ -1,0 +1,10 @@
+---
+- name: set configs to rofi
+  file:
+    src: "~/projects/dotfiles/rofi/"
+    dest: "~/.config/rofi/"
+    state: link
+    force: yes
+  tags:
+    - rofi
+    - rofi_config

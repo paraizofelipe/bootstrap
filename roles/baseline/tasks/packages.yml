@@ -44,6 +44,7 @@
         - polybar
         - python3
         - python3-pip
+        - rofi
         - ranger
         - ripgrep
         - stow
