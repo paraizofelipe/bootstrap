@@ -1,6 +1,6 @@
 ---
-- include: fonts.yml
-- include: ohmyzsh.yml
-- include: delta.yml
-- include: bat.yml
-- include: alacritty.yml
+- include_tasks: fonts.yml
+- include_tasks: ohmyzsh.yml
+- include_tasks: delta.yml
+- include_tasks: bat.yml
+- include_tasks: alacritty.yml

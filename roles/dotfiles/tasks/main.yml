@@ -11,3 +11,4 @@
 - include: alacritty.yml
 - include: i3.yml
 - include: neovim.yml
+- include: deadd.yml
