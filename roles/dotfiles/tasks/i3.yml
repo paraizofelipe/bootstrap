@@ -1,6 +1,6 @@
 ---
 - name: ensure that i3 is installed
-  command: test -d ~/.config/.i3
+  command: test -d ~/.config/i3
   register: i3_installed
   ignore_errors: yes
   tags:

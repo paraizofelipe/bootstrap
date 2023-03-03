@@ -11,3 +11,6 @@
 - include: alacritty.yml
 - include: i3.yml
 - include: neovim.yml
+- include: polybar.yml
+- include: rofi.yml
+- include: git.yml

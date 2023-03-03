@@ -62,5 +62,7 @@ _packages_base:
     - tcl
     - tk
     - zlib
+    - alacritty
+    - xorg-xrandr
 
 packages_base: "{{ _packages_base['all'] + ( _packages_base[ansible_distribution] | default([]) ) }}"

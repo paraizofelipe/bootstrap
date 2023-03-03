@@ -4,34 +4,53 @@
   file:
     path: "~/.fonts"
     state: directory
+  tags:
+    - fonts
+    - fonts_hack
+    - fonts_awesome
       
 - name: ensure global fonts directory
   become: yes
   file:
     path: "/usr/local/share/fonts"
     state: directory
+  tags:
+    - fonts
+    - fonts_hack
+    - fonts_awesome
 
 - name: hack exists
   shell: "ls /usr/local/share/fonts/Hack*Nerd*Font*Complete*"
   register: hack_exists
   ignore_errors: yes
+  tags:
+    - fonts
+    - fonts_hack
 
 - name: download hack
   when: hack_exists is failed
-  become: yes
   unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-    dest: "/usr/local/share/fonts"
+    dest: "~/.fonts"
     remote_src: yes
+  tags:
+    - fonts
+    - fonts_hack
 
-- name: hack exists
-  shell: "ls ~/.fonts/Hack*Nerd*Font*Complete*"
-  register: hack_exists
+- name: fonts awesome exists
+  shell: "ls /usr/local/share/fonts/Font*Awesome*"
+  register: awesome_exists
   ignore_errors: yes
+  tags:
+    - fonts
+    - fonts_awesome
 
-- name: download hack
-  when: hack_exists is failed
+- name: download fonts awesome
+  when: awesome_exists is failed
   unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-    dest: "~/.fonts/"
+    src: https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip  
+    dest: "~/.fonts"
     remote_src: yes
+  tags:
+    - fonts
+    - fonts_awesome
