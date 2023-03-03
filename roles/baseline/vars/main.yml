@@ -1,0 +1,66 @@
+_packages_base:
+  all:
+    - aria2
+    - bash-completion
+    - bat
+    - cargo
+    - cmake
+    - curl
+    - direnv
+    - flatpak
+    - fzf
+    - gettext
+    - git
+    - htop
+    - i3
+    - jq
+    - llvm
+    - pkg-config
+    - polybar
+    - python3
+    - rofi
+    - ranger
+    - ripgrep
+    - stow
+    - tmux
+    - unzip
+    - wget
+    - zsh
+    - zstd
+
+  Ubuntu:
+    - blt-dev
+    - delta
+    - libbz2-dev
+    - libfontconfig1-dev
+    - libfreetype6-dev
+    - libgdbm-dev
+    - libncurses5-dev
+    - libreadline-dev
+    - libsqlite3-dev
+    - libssl-dev
+    - libxcb-xfixes0-dev
+    - libxkbcommon-dev
+    - python3-pip
+    - tcl-dev
+    - tk-dev
+    - zlib1g-dev
+
+  Archlinux:
+    - bzip2
+    - git-delta
+    - fontconfig
+    - freetype2
+    - gdbm
+    - ncurses
+    - readline
+    - sqlite
+    - openssl
+    - libxcb
+    - libxkbcommon
+    - python-pip
+    - tcl
+    - tk
+    - zlib
+
+packages_base: "{{ _packages_base['all'] + ( _packages_base[ansible_distribution] | default([]) ) }}"
