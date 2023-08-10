@@ -1,8 +1,8 @@
 ---
 - name: set configs to polybar
   file:
-    src: "~/projects/dotfiles/polybar/"
-    dest: "~/.config/polybar/"
+    src: "~/projects/dotfiles/polybar"
+    dest: "~/.config/polybar"
     state: link
     force: yes
   tags:

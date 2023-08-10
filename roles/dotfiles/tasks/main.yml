@@ -12,3 +12,6 @@
 - include: i3.yml
 - include: neovim.yml
 - include: deadd.yml
+- include: rofi.yml
+- include: polybar.yml
+- include: git.yml

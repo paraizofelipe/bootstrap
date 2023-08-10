@@ -1,8 +1,8 @@
 ---
 - name: set configs to rofi
   file:
-    src: "~/projects/dotfiles/rofi/"
-    dest: "~/.config/rofi/"
+    src: "~/projects/dotfiles/rofi"
+    dest: "~/.config/rofi"
     state: link
     force: yes
   tags:

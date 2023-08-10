@@ -1,0 +1,20 @@
+---
+- name: set configs to git
+  file:
+    src: "~/projects/dotfiles/git/.gitconfig"
+    dest: "~/.gitconfig"
+    state: link
+    force: yes
+  tags:
+    - git
+    - gitconfig
+
+- name: set gitignore
+  file:
+    src: "~/projects/dotfiles/.gitignore"
+    dest: "~/.gitignore"
+    state: link
+    force: yes
+  tags:
+    - git
+    - gitignore
