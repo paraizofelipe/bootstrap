@@ -3,5 +3,5 @@
 ## Install
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/paraizofelipe/paraizo-bootstrap/main/install.sh)
+$ ansible-playbook playbook.yml --ask-become-pass
 ```
