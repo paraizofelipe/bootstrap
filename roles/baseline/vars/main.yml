@@ -46,6 +46,29 @@ _packages_base:
     - tcl-dev
     - tk-dev
     - zlib1g-dev
+    - meson 
+    - asciidoc
+    - libstartup-notification0-dev
+    - libx11-xcb1
+    - libxcb-xkb-dev
+    - libxcb-xkb1
+    - libxcb-xinerama0-dev
+    - libxcb-randr0-dev
+    - libxcb-shape0-dev
+    - libxcb-util-dev
+    - libxcb-cursor-dev
+    - libxcb-keysyms1-dev
+    - libxcb-icccm4-dev
+    - libxcb-xrm-dev
+    - librust-xkbcommon-dev
+    - libxkbcommon-x11-dev
+    - libyajl-dev
+    - libpcre++-dev
+    - libcairo2-dev
+    - libpango1.0-dev
+    - libpcre2-dev
+    - libev-dev
+
 
   Archlinux:
     - bzip2

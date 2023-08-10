@@ -1,4 +1,35 @@
 ---
+- name: clone i3-gaps source 
+  git:
+    repo: https://www.github.com/Airblader/i3
+    dest: ~/projects/build/i3-gaps/
+    force: yes
+    update: yes
+    version: gaps
+  tags:
+    - i3
+    - i3-gaps
+  when: ansible_distribution == "Ubuntu"
+
+- name: meson gaps
+  command: chdir=~/projects/build/i3-gaps/ meson -Ddocs=true -Dmans=true ../build
+  tags:
+    - i3
+    - i3-gaps
+
+- name: compile i3-gaps
+  command: chdir=~/projects/build/i3-gaps/ meson compile -C ../build
+  tags:
+    - i3
+    - i3-gaps
+
+- name: install i3-gaps
+  become: yes
+  command: chdir=/home/{{ ansible_user_id }}/projects/build/i3-gaps/ meson install -C ../build
+  tags:
+    - i3
+    - i3-gaps
+
 - name: ensure that i3 is installed
   command: test -d ~/.config/.i3
   register: i3_installed
